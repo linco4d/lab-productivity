@@ -148,7 +148,7 @@ I do not have root access.
 " 'how do I install flake8?'
 ```
 The output should be simple, easy to read, and something that you can immediately run on your system and get it to work.
-(If you type this question into <https://chatgpt.com>, you will get answers related to installing on Windows or Mac machines, or answers that assume you have root access on Linux; none of that is applicable for you, however.)
+(If you type "how do I install flake8?" into <https://chatgpt.com>, you will get answers related to installing on Windows or Mac machines, or answers that assume you have root access on Linux; none of that is applicable for you, however.)
 
 But the command is obnoxiously long and hard to write.
 One idea to simplify it is to use a bash variable to store the system prompt:
@@ -183,7 +183,7 @@ $ myllm() {
     I do not have root access.
     EOF
     )
-    llm -s "$SYSYEM_PTOMPT" -m groq-llama-3.3-70b
+    llm -s "$SYSYEM_PTOMPT" -m groq-llama-3.3-70b $@
 }
 $ myllm 'how to install flake8?'
 ```
@@ -237,15 +237,28 @@ groq() {
     I do not have root access.
     EOF
     )
-    llm_blue -s "$SYSYEM_PTOMPT" -m groq-llama-3.3-70b
+    llm_blue -s "$SYSYEM_PTOMPT" -m groq-llama-3.3-70b | $@
 }
 ```
 If you copy/paste it into the terminal, you should see colored output when you run the command `groq`.
 
 > **Exercise:**
-> Add this code to your `.bashrc` file. 
+> `lolcat` is a command that uses ANSI escape codes to make text rainbowy.
+> To see an example, try running:
+> ```
+> $ llm 'what is bash' | lolcat
+> ```
+> If you enjoy colors, modify your `groq` function to use `lolcat` instead of `llm_blue`.
 
-### (Optional) Part 2c: Writing a function for claude-opus
+> **Exercise:**
+> Try modifying the `SYSTEM_PROMPT` variable to get an output that you like
+> For example, maybe you like more detailed responses than me and want the output to be between 10-30 lines instead of 1-20.
+> (I have a more detailed prompt that I use for my `claude` command that you can find in the Part2c section below.)
+
+> **Exercise:**
+> Add your `groq` function to your `.bashrc` file. 
+
+### (Optional) Part 2c: Writing a function for claude opus
 
 Anthropic's claude Opus series of models is widely regarded as the best coding model these days.
 Unlike groq, however, it costs money.
