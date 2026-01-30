@@ -172,16 +172,16 @@ The syntax is shown below.
 ```
 $ myllm() {
     SYSTEM_PROMPT=$(cat <<EOF
-    Keep your response short, between 1-20 lines. Focus on a high signal to noise ratio.
+Keep your response short, between 1-20 lines. Focus on a high signal to noise ratio.
 
-    If the question is about a computer, respond for the following system details:
-    - operating system: $(uname -a).
-    - bash version: $(bash --version | head -n1).
-    - python version: $(python3 --version).
-    - sqlite3 version: $(sqlite3 --version).
-    - git version: $(git --version).
-    I do not have root access.
-    EOF
+If the question is about a computer, respond for the following system details:
+- operating system: $(uname -a).
+- bash version: $(bash --version | head -n1).
+- python version: $(python3 --version).
+- sqlite3 version: $(sqlite3 --version).
+- git version: $(git --version).
+I do not have root access.
+EOF
     )
     llm -s "$SYSTEM_PROMPT" -m groq-llama-3.3-70b "$@"
 }
@@ -226,17 +226,17 @@ Here is the full function that I use:
 ```
 groq() {
     SYSTEM_PROMPT=$(cat <<EOF
-    Keep your response short, between 1-20 lines. Focus on a high signal to noise ratio.
+Keep your response short, between 1-20 lines. Focus on a high signal to noise ratio.
 
-    If the question is about a computer, respond for the following system details:
-    - operating system: $(uname -a).
-    - bash version: $(bash --version | head -n1).
-    - python version: $(python3 --version).
-    - sqlite3 version: $(sqlite3 --version).
-    - git version: $(git --version).
-    I do not have root access.
-    EOF
-    )
+If the question is about a computer, respond for the following system details:
+- operating system: $(uname -a).
+- bash version: $(bash --version | head -n1).
+- python version: $(python3 --version).
+- sqlite3 version: $(sqlite3 --version).
+- git version: $(git --version).
+I do not have root access.
+EOF
+)
     llm_blue -s "$SYSTEM_PROMPT" -m groq-llama-3.3-70b | "$@"
 }
 ```
@@ -289,27 +289,28 @@ function claude() {(
     #cost_output=15
 
     SYSTEM_PROMPT=$(cat <<EOF
-    Keep your response short, between 1-20 lines. Focus on a high signal to noise ratio. Your target audience is people with phds in math and computer science.
+Keep your response short, between 1-20 lines. Focus on a high signal to noise ratio. Your target audience is people with phds in math and computer science.
 
-    If the question is about a computer, respond for the following system details:
-    - operating system: $(uname -a).
-    - bash version: $(bash --version | head -n1).
-    - python version: $(python3 --version).
-    - sqlite3 version: $(sqlite3 --version).
-    - git version: $(git --version).
-    - docker version: $(docker --version).
+If the question is about a computer, respond for the following system details:
+- operating system: $(uname -a).
+- bash version: $(bash --version | head -n1).
+- python version: $(python3 --version).
+- sqlite3 version: $(sqlite3 --version).
+- git version: $(git --version).
+- docker version: $(docker --version).
 
-    When asked to implement a function:
-    - only output code, no markdown
-    - write comments that:
-        - explain the underlying algorithm
-        - do NOT explain minor syntax/library details
-        - are stand-alone and do not require context of the input question to understand
-    - when writing a python function from scrach:
-        - provide a full docstring and doctests
-    - when modifying an existing function:
-        - do not repeat the existing docstring
-    )
+When asked to implement a function:
+- only output code, no markdown
+- write comments that:
+    - explain the underlying algorithm
+    - do NOT explain minor syntax/library details
+    - are stand-alone and do not require context of the input question to understand
+- when writing a python function from scrach:
+    - provide a full docstring and doctests
+- when modifying an existing function:
+    - do not repeat the existing docstring
+EOF
+)
 
     # Capture stderr while preserving stdout;
     # we will extract the number of tokens from stderr in order to compute the price we paid
