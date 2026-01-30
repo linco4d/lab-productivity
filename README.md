@@ -183,7 +183,7 @@ $ myllm() {
     I do not have root access.
     EOF
     )
-    llm -s "$SYSTEM_PTOMPT" -m groq-llama-3.3-70b $@
+    llm -s "$SYSTEM_PTOMPT" -m groq-llama-3.3-70b "$@"
 }
 $ myllm 'how to install flake8?'
 ```
@@ -237,7 +237,7 @@ groq() {
     I do not have root access.
     EOF
     )
-    llm_blue -s "$SYSTEM_PTOMPT" -m groq-llama-3.3-70b | $@
+    llm_blue -s "$SYSTEM_PTOMPT" -m groq-llama-3.3-70b | "$@"
 }
 ```
 If you copy/paste it into the terminal, you should see colored output when you run the command `groq`.
