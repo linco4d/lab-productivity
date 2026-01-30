@@ -165,7 +165,7 @@ If the question is about a computer, respond for the following system details:
 I do not have root access.
 EOF
 )
-$ llm -s "$SYSTEM_PTOMPT" 'how to install flake8?'
+$ llm -s "$SYSTEM_PROMPT" 'how to install flake8?'
 ```
 This is much better, but we can do even better still by using a [bash function](https://www.w3schools.com/bash/bash_functions.php).
 The syntax is shown below.
@@ -183,7 +183,7 @@ $ myllm() {
     I do not have root access.
     EOF
     )
-    llm -s "$SYSTEM_PTOMPT" -m groq-llama-3.3-70b "$@"
+    llm -s "$SYSTEM_PROMPT" -m groq-llama-3.3-70b "$@"
 }
 $ myllm 'how to install flake8?'
 ```
@@ -237,7 +237,7 @@ groq() {
     I do not have root access.
     EOF
     )
-    llm_blue -s "$SYSTEM_PTOMPT" -m groq-llama-3.3-70b | "$@"
+    llm_blue -s "$SYSTEM_PROMPT" -m groq-llama-3.3-70b | "$@"
 }
 ```
 If you copy/paste it into the terminal, you should see colored output when you run the command `groq`.
